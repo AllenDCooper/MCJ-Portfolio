@@ -16,10 +16,8 @@ module.exports = function(grunt) {
           sourcemap: false,
         },
         files: {
-          'css/gallery-materialize.css': 'sass/gallery.scss',
-          'css/gallery-standalone.css': 'sass/gallery-standalone.scss',
-          'css/gallery-dark-materialize.css': 'sass/gallery-dark.scss',
-          'css/gallery-dark-standalone.css': 'sass/gallery-dark-standalone.scss',
+          'css/startup-materialize.css': 'sass/startup.scss',
+          'css/startup-standalone.css': 'sass/startup-standalone.scss'
         }
       },
 
@@ -29,13 +27,10 @@ module.exports = function(grunt) {
           sourcemap: false
         },
         files: {
-          'css/gallery-materialize.min.css': 'sass/gallery.scss',
-          'css/gallery-standalone.css': 'sass/gallery-standalone.scss',
-          'css/gallery-dark-materialize.min.css': 'sass/gallery-dark.scss',
-          'css/gallery-dark-standalone.min.css': 'sass/gallery-dark-standalone.scss',
+          'css/startup-materialize.min.css': 'sass/startup.scss',
+          'css/startup-standalone.min.css': 'sass/startup-standalone.scss'
         }
       },
-
     },
 
     // PostCss Autoprefixer
@@ -48,15 +43,15 @@ module.exports = function(grunt) {
                 'Chrome >= 30',
                 'Firefox >= 30',
                 'ie >= 10',
-                'Safari >= 7']
+                'Safari >= 8']
           })
         ]
       },
       expanded: {
-        src: 'css/gallery-materialize.css'
+        src: 'css/startup-materialize.css'
       },
       min: {
-        src: 'css/gallery-materialize.min.css'
+        src: ['css/materialize.min.css', 'css/startup-materialize.min.css']
       },
     },
 
@@ -120,27 +115,6 @@ module.exports = function(grunt) {
         // the location of the resulting JS file
         dest: 'js/materialize.js'
       },
-      demoInit: {
-        src: [
-          'demo/js/imagesloaded.pkgd.min.js',
-          'demo/js/masonry.pkgd.min.js',
-          'demo/js/color-thief.min.js',
-          'demo/js/galleryExpand.js',
-          'demo/js/init.js',
-        ],
-        dest: 'demo/gallery.js'
-      },
-      demoDocs: {
-        src: [
-          'demo/js/prism.js',
-          'demo/js/imagesloaded.pkgd.min.js',
-          'demo/js/masonry.pkgd.min.js',
-          'demo/js/color-thief.min.js',
-          'demo/js/galleryExpand.js',
-          'demo/js/docs-init.js',
-        ],
-        dest: 'demo/gallery-docs.js'
-      },
       temp: {
         // the files to concatenate
         src: [
@@ -194,12 +168,6 @@ module.exports = function(grunt) {
           'js/materialize.js': ['js/materialize.js']
         }
       },
-      demo: {
-        files: {
-          'demo/gallery.min.js': ['demo/gallery.js'],
-          'demo/gallery-docs.min.js': ['demo/gallery-docs.js']
-        }
-      },
       bin: {
         files: {
           'bin/materialize.js': ['temp/js/materialize.js']
@@ -220,75 +188,10 @@ module.exports = function(grunt) {
      },
    },
 
-//  Jade
-    jade: {
-      compile: {
-        options: {
-          pretty: true,
-          data: {
-            debug: false
-          }
-        },
-        files: {
-          "docs/index.html": "jade/index.jade",
-          "docs/icons.html": "jade/icons.jade",
-          "docs/about.html": "jade/about.jade",
-          "docs/sass.html": "jade/sass.jade",
-          "docs/getting-started.html": "jade/getting-started.jade",
-          "docs/mobile.html": "jade/mobile.jade",
-          "docs/showcase.html": "jade/showcase.jade",
-          "docs/parallax.html": "jade/parallax.jade",
-          "docs/parallax-demo.html": "jade/parallax-demo.jade",
-          "docs/typography.html": "jade/typography.jade",
-          "docs/color.html": "jade/color.jade",
-          "docs/shadow.html": "jade/shadow.jade",
-          "docs/grid.html": "jade/grid.jade",
-          "docs/media-css.html": "jade/media-css.jade",
-          "docs/table.html": "jade/table.jade",
-          "docs/helpers.html": "jade/helpers.jade",
-          "docs/forms.html": "jade/forms.jade",
-          "docs/buttons.html": "jade/buttons.jade",
-          "docs/navbar.html": "jade/navbar.jade",
-          "docs/cards.html": "jade/cards.jade",
-          "docs/preloader.html": "jade/preloader.jade",
-          "docs/collections.html": "jade/collections.jade",
-          "docs/badges.html": "jade/badges.jade",
-          "docs/footer.html": "jade/footer.jade",
-          "docs/dialogs.html": "jade/dialogs.jade",
-          "docs/modals.html": "jade/modals.jade",
-          "docs/dropdown.html": "jade/dropdown.jade",
-          "docs/tabs.html": "jade/tabs.jade",
-          "docs/side-nav.html": "jade/sideNav.jade",
-          "docs/pushpin.html": "jade/pushpin.jade",
-          "docs/waves.html": "jade/waves.jade",
-          "docs/media.html": "jade/media.jade",
-          "docs/collapsible.html": "jade/collapsible.jade",
-          "docs/chips.html": "jade/chips.jade",
-          "docs/scrollfire.html": "jade/scrollFire.jade",
-          "docs/scrollspy.html": "jade/scrollspy.jade",
-          "docs/transitions.html": "jade/transitions.jade",
-          "docs/fullscreen-slider-demo.html": "jade/fullscreen-slider-demo.jade",
-          "docs/pagination.html": "jade/pagination.jade",
-          "docs/breadcrumbs.html": "jade/breadcrumbs.jade"
-
-
-        }
-      }
-    },
-
 //  Watch Files
     watch: {
-      jade: {
-        files: ['jade/**/*'],
-        tasks: ['jade_compile'],
-        options: {
-          interrupt: false,
-          spawn: false,
-        },
-      },
-
       js: {
-        files: [ "js/materialize/js/**/*", "!js/init.js"],
+        files: [ "js/**/*", "!js/init.js"],
         tasks: ['js_compile'],
         options: {
           interrupt: false,
@@ -314,7 +217,7 @@ module.exports = function(grunt) {
         limit: 10,
       },
       monitor: {
-        tasks: ["watch:jade", "watch:js", "watch:sass", "notify:watching", 'server']
+        tasks: ["watch:js", "watch:sass", "notify:watching", 'server']
       },
     },
 
@@ -372,65 +275,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Text Replace
-    // replace: {
-    //   version: { // Does not edit README.md
-    //     src: [
-    //       'bower.json',
-    //       'package.json',
-    //       'package.js',
-    //       'jade/**/*.html'
-    //     ],
-    //     overwrite: true,
-    //     replacements: [{
-    //       from: grunt.option( "oldver" ),
-    //       to: grunt.option( "newver" )
-    //     }]
-    //   },
-    //   readme: { // Changes README.md
-    //     src: [
-    //       'README.md'
-    //     ],
-    //     overwrite: true,
-    //     replacements: [{
-    //       from: 'Current Version : v'+grunt.option( "oldver" ),
-    //       to: 'Current Version : v'+grunt.option( "newver" )
-    //     }]
-    //   },
-    // },
-
-    // Create Version Header for files
-    // usebanner: {
-    //     release: {
-    //       options: {
-    //         position: 'top',
-    //         banner: "/*!\n * Materialize v"+ grunt.option( "newver" ) +" (http://materializecss.com)\n * Copyright 2014-2015 Materialize\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\n */",
-    //         linebreak: true
-    //       },
-    //       files: {
-    //         src: [ 'dist/css/*.css', 'dist/js/*.js']
-    //       }
-    //     }
-    //   },
-
-      // Rename files
-    // rename: {
-    //       rename_src: {
-    //           src: 'bin/materialize-src'+'.zip',
-    //           dest: 'bin/materialize-src-v'+grunt.option( "newver" )+'.zip',
-    //           options: {
-    //             ignore: true
-    //           }
-    //       },
-    //       rename_compiled: {
-    //           src: 'bin/materialize'+'.zip',
-    //           dest: 'bin/materialize-v'+grunt.option( "newver" )+'.zip',
-    //           options: {
-    //             ignore: true
-    //           }
-    //       },
-    //   },
-
       // Removes console logs
       removelogging: {
           source: {
@@ -485,12 +329,9 @@ module.exports = function(grunt) {
     ]
   );
 
-  grunt.registerTask('jade_compile', ['jade', 'notify:jade_compile']);
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
-  grunt.registerTask('sass_compile', ['sass:expanded', 'sass:min', 'postcss:min', 'postcss:expanded', 'notify:sass_compile']);
+  grunt.registerTask('sass_compile', ['sass:min', 'sass:expanded', 'postcss:min', 'postcss:expanded', 'notify:sass_compile']);
   grunt.registerTask('server', ['browserSync', 'notify:server']);
   grunt.registerTask('lint', ['removelogging:source']);
   grunt.registerTask('monitor', ["concurrent:monitor"]);
-  grunt.registerTask('travis', ['jasmine']);
-  grunt.registerTask('demo', ['concat:demoInit', 'concat:demoDocs', 'uglify:demo']);
 };

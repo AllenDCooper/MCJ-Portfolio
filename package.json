@@ -1,7 +1,7 @@
 {
-  "name": "gallery",
-  "version": "1.0.1",
-  "description": "Gallery Materialize Theme",
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "Startup Materialize Theme",
   "main": "Gruntfile.js",
   "directories": {
     "doc": "docs"

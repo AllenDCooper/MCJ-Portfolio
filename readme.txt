@@ -1,4 +1,4 @@
-Gallery
+Startup
 Made by Alan Chang
 Materializecss.com
 
