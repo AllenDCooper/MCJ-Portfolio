@@ -1,0 +1,19 @@
+#custom-width {
+    max-width: 80%;
+    margin-right:-10px;
+    margin-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    #custom-width {
+      max-width:45%;
+      margin-right:25%;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    #custom-width {
+      max-width:30%;
+      margin-right:34%;
+    }
+  }
